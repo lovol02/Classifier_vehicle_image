@@ -1,0 +1,511 @@
+{
+    "CLIP_kmeans": {
+        "1": {
+            "a photo of a sporty aggressive style car": 0.4836683136348851,
+            "a photo of a elegant luxury style car": 0.31760446322329283,
+            "a photo of a rugged off-road style car": 0.11023502501174345,
+            "a photo of a futuristic style car": 0.06701078981707016,
+            "a photo of a vintage style car": 0.021481405613163154
+        },
+        "2": {
+            "a photo of a sporty aggressive style car": 0.2247026435822647,
+            "a photo of a elegant luxury style car": 0.02578820806932054,
+            "a photo of a rugged off-road style car": 0.7461841572628488,
+            "a photo of a futuristic style car": 0.0016801897630510012,
+            "a photo of a vintage style car": 0.001644799171421463
+        },
+        "3": {
+            "a photo of a sporty aggressive style car": 0.41398414428002933,
+            "a photo of a elegant luxury style car": 0.38256713834483125,
+            "a photo of a rugged off-road style car": 0.00792833211818815,
+            "a photo of a futuristic style car": 0.18544376427388143,
+            "a photo of a vintage style car": 0.010076620324133426
+        },
+        "4": {
+            "a photo of a sporty aggressive style car": 0.45442572895093375,
+            "a photo of a elegant luxury style car": 0.15667594490978298,
+            "a photo of a rugged off-road style car": 0.16358597990655613,
+            "a photo of a futuristic style car": 0.15940952984911347,
+            "a photo of a vintage style car": 0.06590281593179567
+        },
+        "5": {
+            "a photo of a sporty aggressive style car": 0.3270954630286244,
+            "a photo of a elegant luxury style car": 0.14027862536289307,
+            "a photo of a rugged off-road style car": 0.5109503826254366,
+            "a photo of a futuristic style car": 0.015513278905033281,
+            "a photo of a vintage style car": 0.006162249332599444
+        },
+        "6": {
+            "a photo of a sporty aggressive style car": 0.33107057284562286,
+            "a photo of a elegant luxury style car": 0.11362242940174623,
+            "a photo of a rugged off-road style car": 0.523384469434664,
+            "a photo of a futuristic style car": 0.018801538513510394,
+            "a photo of a vintage style car": 0.013120990656057006
+        },
+        "7": {
+            "a photo of a sporty aggressive style car": 0.3324816880707184,
+            "a photo of a elegant luxury style car": 0.57626204660364,
+            "a photo of a rugged off-road style car": 0.017256124817141175,
+            "a photo of a futuristic style car": 0.06610996956344865,
+            "a photo of a vintage style car": 0.007890168525188054
+        },
+        "8": {
+            "a photo of a sporty aggressive style car": 0.23045136831285307,
+            "a photo of a elegant luxury style car": 0.7229072865126347,
+            "a photo of a rugged off-road style car": 0.008850001984190945,
+            "a photo of a futuristic style car": 0.029868113374975573,
+            "a photo of a vintage style car": 0.007923228169682441
+        }
+    },
+    "CLIP_dbscan": {
+        "1": {
+            "a photo of a sporty aggressive style car": 0.35933671262483524,
+            "a photo of a elegant luxury style car": 0.4982781686348989,
+            "a photo of a rugged off-road style car": 0.012307768564098683,
+            "a photo of a futuristic style car": 0.12223230820658772,
+            "a photo of a vintage style car": 0.007845040504988897
+        },
+        "2": {
+            "a photo of a sporty aggressive style car": 0.3594694572380143,
+            "a photo of a elegant luxury style car": 0.4791596169427121,
+            "a photo of a rugged off-road style car": 0.08509094598162643,
+            "a photo of a futuristic style car": 0.05783294234856499,
+            "a photo of a vintage style car": 0.018447034692162575
+        },
+        "3": {
+            "a photo of a sporty aggressive style car": 0.27240292233080105,
+            "a photo of a elegant luxury style car": 0.07714313347827158,
+            "a photo of a rugged off-road style car": 0.6433549032403236,
+            "a photo of a futuristic style car": 0.004781074467323869,
+            "a photo of a vintage style car": 0.0023179652031455724
+        },
+        "4": {
+            "a photo of a sporty aggressive style car": 0.33107057284562286,
+            "a photo of a elegant luxury style car": 0.11362242940174623,
+            "a photo of a rugged off-road style car": 0.523384469434664,
+            "a photo of a futuristic style car": 0.018801538513510394,
+            "a photo of a vintage style car": 0.013120990656057006
+        },
+        "5": {
+            "a photo of a sporty aggressive style car": 0.1378746307794548,
+            "a photo of a elegant luxury style car": 0.3151035260576691,
+            "a photo of a rugged off-road style car": 0.11134745710811937,
+            "a photo of a futuristic style car": 0.3007046263034378,
+            "a photo of a vintage style car": 0.134969754893973
+        },
+        "6": {
+            "a photo of a sporty aggressive style car": 0.3595154798101811,
+            "a photo of a elegant luxury style car": 0.0723536345897065,
+            "a photo of a rugged off-road style car": 0.5576748648392302,
+            "a photo of a futuristic style car": 0.007880873972247909,
+            "a photo of a vintage style car": 0.002575147039957907
+        },
+        "7": {
+            "a photo of a sporty aggressive style car": 0.8708649798045083,
+            "a photo of a elegant luxury style car": 0.08307284504934657,
+            "a photo of a rugged off-road style car": 0.008283563727673027,
+            "a photo of a futuristic style car": 0.035741664276602456,
+            "a photo of a vintage style car": 0.00203695335042698
+        },
+        "8": {
+            "a photo of a sporty aggressive style car": 0.8100825529999849,
+            "a photo of a elegant luxury style car": 0.1459201301487799,
+            "a photo of a rugged off-road style car": 0.03453056749365315,
+            "a photo of a futuristic style car": 0.0072129591639301304,
+            "a photo of a vintage style car": 0.0022537704552876943
+        },
+        "9": {
+            "a photo of a sporty aggressive style car": 0.38998993469091753,
+            "a photo of a elegant luxury style car": 0.2859990695976497,
+            "a photo of a rugged off-road style car": 0.24378199481313156,
+            "a photo of a futuristic style car": 0.05414248995415013,
+            "a photo of a vintage style car": 0.026086504333276632
+        },
+        "10": {
+            "a photo of a sporty aggressive style car": 0.687215990633578,
+            "a photo of a elegant luxury style car": 0.041934118294345867,
+            "a photo of a rugged off-road style car": 0.09632341213064383,
+            "a photo of a futuristic style car": 0.16267087477876024,
+            "a photo of a vintage style car": 0.011855609940446172
+        },
+        "11": {
+            "a photo of a sporty aggressive style car": 0.5405436353292317,
+            "a photo of a elegant luxury style car": 0.2852271436713636,
+            "a photo of a rugged off-road style car": 0.026490010260022245,
+            "a photo of a futuristic style car": 0.1384766297414899,
+            "a photo of a vintage style car": 0.009262570247483382
+        },
+        "12": {
+            "a photo of a sporty aggressive style car": 0.3960050239425135,
+            "a photo of a elegant luxury style car": 0.18440953999576823,
+            "a photo of a rugged off-road style car": 0.24403977358025983,
+            "a photo of a futuristic style car": 0.09412069080948314,
+            "a photo of a vintage style car": 0.08142496785820412
+        },
+        "13": {
+            "a photo of a sporty aggressive style car": 0.24801057321738085,
+            "a photo of a elegant luxury style car": 0.028010447111026023,
+            "a photo of a rugged off-road style car": 0.7229771414472733,
+            "a photo of a futuristic style car": 0.0008450677596781055,
+            "a photo of a vintage style car": 0.0001567838389129054
+        },
+        "14": {
+            "a photo of a sporty aggressive style car": 0.15189484296267847,
+            "a photo of a elegant luxury style car": 0.0063949478235601825,
+            "a photo of a rugged off-road style car": 0.8406991099902228,
+            "a photo of a futuristic style car": 0.0005643916153013717,
+            "a photo of a vintage style car": 0.0004467040837540964
+        },
+        "15": {
+            "a photo of a sporty aggressive style car": 0.6841056895043168,
+            "a photo of a elegant luxury style car": 0.19394689463522463,
+            "a photo of a rugged off-road style car": 0.03908941483574121,
+            "a photo of a futuristic style car": 0.06290588969187368,
+            "a photo of a vintage style car": 0.019952119881747336
+        },
+        "16": {
+            "a photo of a sporty aggressive style car": 0.2958095320966095,
+            "a photo of a elegant luxury style car": 0.22137892704922707,
+            "a photo of a rugged off-road style car": 0.46136069200001656,
+            "a photo of a futuristic style car": 0.018681409511191304,
+            "a photo of a vintage style car": 0.002769436455128016
+        },
+        "17": {
+            "a photo of a sporty aggressive style car": 0.18544716260706384,
+            "a photo of a elegant luxury style car": 0.07194569757945525,
+            "a photo of a rugged off-road style car": 0.7039897292852402,
+            "a photo of a futuristic style car": 0.03599290414470791,
+            "a photo of a vintage style car": 0.002624512936138975
+        },
+        "18": {
+            "a photo of a sporty aggressive style car": 0.4722550369121812,
+            "a photo of a elegant luxury style car": 0.5040480076250705,
+            "a photo of a rugged off-road style car": 0.00483868875016924,
+            "a photo of a futuristic style car": 0.011923224906654055,
+            "a photo of a vintage style car": 0.00693504192229904
+        },
+        "19": {
+            "a photo of a sporty aggressive style car": 0.5281910857806603,
+            "a photo of a elegant luxury style car": 0.10270085509982892,
+            "a photo of a rugged off-road style car": 0.36275066235878817,
+            "a photo of a futuristic style car": 0.005880807131052279,
+            "a photo of a vintage style car": 0.0004765907662886093
+        },
+        "20": {
+            "a photo of a sporty aggressive style car": 0.37734613699865516,
+            "a photo of a elegant luxury style car": 0.3643937661056069,
+            "a photo of a rugged off-road style car": 0.00061425450428652,
+            "a photo of a futuristic style car": 0.25385042944032216,
+            "a photo of a vintage style car": 0.0037954057662990754
+        },
+        "21": {
+            "a photo of a sporty aggressive style car": 0.5515149574485614,
+            "a photo of a elegant luxury style car": 0.27041448895771747,
+            "a photo of a rugged off-road style car": 0.01753253036687259,
+            "a photo of a futuristic style car": 0.13124263684119586,
+            "a photo of a vintage style car": 0.02929538970032246
+        }
+    },
+    "DINOv2_kmeans": {
+        "1": {
+            "a photo of a sporty aggressive style car": 0.39351619635133256,
+            "a photo of a elegant luxury style car": 0.3702420770959494,
+            "a photo of a rugged off-road style car": 0.16947970698361334,
+            "a photo of a futuristic style car": 0.05843390968946262,
+            "a photo of a vintage style car": 0.008328107508906498
+        },
+        "2": {
+            "a photo of a sporty aggressive style car": 0.2616528166206638,
+            "a photo of a elegant luxury style car": 0.07418131574487113,
+            "a photo of a rugged off-road style car": 0.6518254569495807,
+            "a photo of a futuristic style car": 0.0094138564111457,
+            "a photo of a vintage style car": 0.002926553590634519
+        },
+        "3": {
+            "a photo of a sporty aggressive style car": 0.36193218329339394,
+            "a photo of a elegant luxury style car": 0.4707279494520477,
+            "a photo of a rugged off-road style car": 0.0862029071657092,
+            "a photo of a futuristic style car": 0.06007769563944591,
+            "a photo of a vintage style car": 0.021059260172073255
+        },
+        "4": {
+            "a photo of a sporty aggressive style car": 0.4088664852576744,
+            "a photo of a elegant luxury style car": 0.40479467834573385,
+            "a photo of a rugged off-road style car": 0.09590972131261219,
+            "a photo of a futuristic style car": 0.08158244368488153,
+            "a photo of a vintage style car": 0.008846670884992587
+        },
+        "5": {
+            "a photo of a sporty aggressive style car": 0.36425906078155784,
+            "a photo of a elegant luxury style car": 0.03741634445733146,
+            "a photo of a rugged off-road style car": 0.5706974128737067,
+            "a photo of a futuristic style car": 0.013410011245754385,
+            "a photo of a vintage style car": 0.014217172080695962
+        },
+        "6": {
+            "a photo of a sporty aggressive style car": 0.4702261821657768,
+            "a photo of a elegant luxury style car": 0.40383443408052205,
+            "a photo of a rugged off-road style car": 0.07322312365412581,
+            "a photo of a futuristic style car": 0.04455429414157997,
+            "a photo of a vintage style car": 0.00816196504696113
+        },
+        "7": {
+            "a photo of a sporty aggressive style car": 0.18242406088899438,
+            "a photo of a elegant luxury style car": 0.017317350814445215,
+            "a photo of a rugged off-road style car": 0.7985332030260447,
+            "a photo of a futuristic style car": 0.0008174419841859352,
+            "a photo of a vintage style car": 0.0009079412660771479
+        },
+        "8": {
+            "a photo of a sporty aggressive style car": 0.4017271770904626,
+            "a photo of a elegant luxury style car": 0.28233930894479575,
+            "a photo of a rugged off-road style car": 0.12446536866437063,
+            "a photo of a futuristic style car": 0.1384544897528615,
+            "a photo of a vintage style car": 0.05301365634324464
+        },
+        "9": {
+            "a photo of a sporty aggressive style car": 0.3443999619151537,
+            "a photo of a elegant luxury style car": 0.34661628037977676,
+            "a photo of a rugged off-road style car": 0.2603078506815319,
+            "a photo of a futuristic style car": 0.03188627947372599,
+            "a photo of a vintage style car": 0.016789632678354302
+        },
+        "10": {
+            "a photo of a sporty aggressive style car": 0.3908786909082326,
+            "a photo of a elegant luxury style car": 0.4105898450258511,
+            "a photo of a rugged off-road style car": 0.005979613591600321,
+            "a photo of a futuristic style car": 0.18585351821301238,
+            "a photo of a vintage style car": 0.006698330839748355
+        }
+    },
+    "DINOv2_dbscan": {
+        "1": {
+            "a photo of a sporty aggressive style car": 0.36401278103646356,
+            "a photo of a elegant luxury style car": 0.48527869408968827,
+            "a photo of a rugged off-road style car": 0.07233867037020239,
+            "a photo of a futuristic style car": 0.05820791059493196,
+            "a photo of a vintage style car": 0.020161939679685558
+        },
+        "2": {
+            "a photo of a sporty aggressive style car": 0.2572598405995864,
+            "a photo of a elegant luxury style car": 0.06241223836017152,
+            "a photo of a rugged off-road style car": 0.6708291056867051,
+            "a photo of a futuristic style car": 0.0069992032933645035,
+            "a photo of a vintage style car": 0.002499611374094171
+        },
+        "3": {
+            "a photo of a sporty aggressive style car": 0.5105909861295539,
+            "a photo of a elegant luxury style car": 0.23579349449337791,
+            "a photo of a rugged off-road style car": 0.1554437714168873,
+            "a photo of a futuristic style car": 0.08546681947184588,
+            "a photo of a vintage style car": 0.012704930196181807
+        },
+        "4": {
+            "a photo of a sporty aggressive style car": 0.3413414227892449,
+            "a photo of a elegant luxury style car": 0.32315420729522326,
+            "a photo of a rugged off-road style car": 0.26638483319440304,
+            "a photo of a futuristic style car": 0.06245917778449928,
+            "a photo of a vintage style car": 0.006660357700183371
+        },
+        "5": {
+            "a photo of a sporty aggressive style car": 0.43296278281771566,
+            "a photo of a elegant luxury style car": 0.1634599338537915,
+            "a photo of a rugged off-road style car": 0.17570934708169736,
+            "a photo of a futuristic style car": 0.15782934248977654,
+            "a photo of a vintage style car": 0.07003859481423784
+        },
+        "6": {
+            "a photo of a sporty aggressive style car": 0.3526186959578614,
+            "a photo of a elegant luxury style car": 0.49253798439302027,
+            "a photo of a rugged off-road style car": 0.07571176216952272,
+            "a photo of a futuristic style car": 0.07541931847920966,
+            "a photo of a vintage style car": 0.003712236516447527
+        },
+        "7": {
+            "a photo of a sporty aggressive style car": 0.39321311177237966,
+            "a photo of a elegant luxury style car": 0.410561694020606,
+            "a photo of a rugged off-road style car": 0.0060439755222460225,
+            "a photo of a futuristic style car": 0.1832419428736439,
+            "a photo of a vintage style car": 0.0069392742278758385
+        },
+        "8": {
+            "a photo of a sporty aggressive style car": 0.3578815362973886,
+            "a photo of a elegant luxury style car": 0.4394713778269734,
+            "a photo of a rugged off-road style car": 0.04813808649635053,
+            "a photo of a futuristic style car": 0.12842047518634372,
+            "a photo of a vintage style car": 0.02608852495905012
+        },
+        "9": {
+            "a photo of a sporty aggressive style car": 0.381630662385432,
+            "a photo of a elegant luxury style car": 0.37551716227326065,
+            "a photo of a rugged off-road style car": 0.1908515826676854,
+            "a photo of a futuristic style car": 0.0479162713187642,
+            "a photo of a vintage style car": 0.004084318607640798
+        },
+        "10": {
+            "a photo of a sporty aggressive style car": 0.5274266701471091,
+            "a photo of a elegant luxury style car": 0.28290972608329434,
+            "a photo of a rugged off-road style car": 0.13959349327221773,
+            "a photo of a futuristic style car": 0.045854441008936896,
+            "a photo of a vintage style car": 0.004215667790312363
+        },
+        "11": {
+            "a photo of a sporty aggressive style car": 0.4553609256389435,
+            "a photo of a elegant luxury style car": 0.4774821412402603,
+            "a photo of a rugged off-road style car": 0.015285747086759064,
+            "a photo of a futuristic style car": 0.04418752092416839,
+            "a photo of a vintage style car": 0.007683665755547085
+        },
+        "12": {
+            "a photo of a sporty aggressive style car": 0.36425906078155784,
+            "a photo of a elegant luxury style car": 0.03741634445733146,
+            "a photo of a rugged off-road style car": 0.5706974128737067,
+            "a photo of a futuristic style car": 0.013410011245754385,
+            "a photo of a vintage style car": 0.014217172080695962
+        },
+        "13": {
+            "a photo of a sporty aggressive style car": 0.5452942621448765,
+            "a photo of a elegant luxury style car": 0.40011518067963747,
+            "a photo of a rugged off-road style car": 0.02711327226848959,
+            "a photo of a futuristic style car": 0.022864001291885,
+            "a photo of a vintage style car": 0.0046132776371213486
+        },
+        "14": {
+            "a photo of a sporty aggressive style car": 0.3443999619151537,
+            "a photo of a elegant luxury style car": 0.34661628037977676,
+            "a photo of a rugged off-road style car": 0.2603078506815319,
+            "a photo of a futuristic style car": 0.03188627947372599,
+            "a photo of a vintage style car": 0.016789632678354302
+        },
+        "15": {
+            "a photo of a sporty aggressive style car": 0.27901457400359914,
+            "a photo of a elegant luxury style car": 0.014655565935514323,
+            "a photo of a rugged off-road style car": 0.7045164951738322,
+            "a photo of a futuristic style car": 0.0014686836312146727,
+            "a photo of a vintage style car": 0.00034468345222434573
+        },
+        "16": {
+            "a photo of a sporty aggressive style car": 0.48712388858040595,
+            "a photo of a elegant luxury style car": 0.12375492378673021,
+            "a photo of a rugged off-road style car": 0.34944114219793615,
+            "a photo of a futuristic style car": 0.02114404733305143,
+            "a photo of a vintage style car": 0.01853600276561028
+        },
+        "17": {
+            "a photo of a sporty aggressive style car": 0.24714637017593935,
+            "a photo of a elegant luxury style car": 0.3832851672867456,
+            "a photo of a rugged off-road style car": 0.3614568467377327,
+            "a photo of a futuristic style car": 0.00693706858454299,
+            "a photo of a vintage style car": 0.0011745477072858752
+        },
+        "18": {
+            "a photo of a sporty aggressive style car": 0.3313942490042084,
+            "a photo of a elegant luxury style car": 0.0824580068518925,
+            "a photo of a rugged off-road style car": 0.4400549826160487,
+            "a photo of a futuristic style car": 0.10185067945147036,
+            "a photo of a vintage style car": 0.04424207738096205
+        },
+        "19": {
+            "a photo of a sporty aggressive style car": 0.3954973360802978,
+            "a photo of a elegant luxury style car": 0.36421801679302007,
+            "a photo of a rugged off-road style car": 0.12098444434115663,
+            "a photo of a futuristic style car": 0.09866234292741866,
+            "a photo of a vintage style car": 0.020637855609529653
+        },
+        "20": {
+            "a photo of a sporty aggressive style car": 0.45210601520888943,
+            "a photo of a elegant luxury style car": 0.3489064688465613,
+            "a photo of a rugged off-road style car": 0.04190320471260587,
+            "a photo of a futuristic style car": 0.08051775350673672,
+            "a photo of a vintage style car": 0.0765665556451388
+        },
+        "21": {
+            "a photo of a sporty aggressive style car": 0.015488652017666027,
+            "a photo of a elegant luxury style car": 0.8633824988053396,
+            "a photo of a rugged off-road style car": 0.029159788228123665,
+            "a photo of a futuristic style car": 0.034561631574223824,
+            "a photo of a vintage style car": 0.05740741865100482
+        },
+        "22": {
+            "a photo of a sporty aggressive style car": 0.45867064728268553,
+            "a photo of a elegant luxury style car": 0.24654188513522968,
+            "a photo of a rugged off-road style car": 0.009081102168628214,
+            "a photo of a futuristic style car": 0.27678606087075813,
+            "a photo of a vintage style car": 0.008920316093281144
+        }
+    },
+    "ResNet50_kmeans": {
+        "1": {
+            "a photo of a sporty aggressive style car": 0.3785758574554063,
+            "a photo of a elegant luxury style car": 0.1701843074581499,
+            "a photo of a rugged off-road style car": 0.3955753185153955,
+            "a photo of a futuristic style car": 0.03692479095309012,
+            "a photo of a vintage style car": 0.018739724005552762
+        },
+        "2": {
+            "a photo of a sporty aggressive style car": 0.4647340496256681,
+            "a photo of a elegant luxury style car": 0.39692660705088195,
+            "a photo of a rugged off-road style car": 0.04699310615092383,
+            "a photo of a futuristic style car": 0.08740357794569403,
+            "a photo of a vintage style car": 0.003942655962523769
+        },
+        "3": {
+            "a photo of a sporty aggressive style car": 0.26022566528864327,
+            "a photo of a elegant luxury style car": 0.06457511684884633,
+            "a photo of a rugged off-road style car": 0.66676392992357,
+            "a photo of a futuristic style car": 0.004616048340232492,
+            "a photo of a vintage style car": 0.0038192375503418577
+        },
+        "4": {
+            "a photo of a sporty aggressive style car": 0.374159985529751,
+            "a photo of a elegant luxury style car": 0.42612015999967556,
+            "a photo of a rugged off-road style car": 0.01696482125595721,
+            "a photo of a futuristic style car": 0.16430628829619373,
+            "a photo of a vintage style car": 0.018448745017500906
+        },
+        "5": {
+            "a photo of a sporty aggressive style car": 0.3086272820245369,
+            "a photo of a elegant luxury style car": 0.4664326849179182,
+            "a photo of a rugged off-road style car": 0.13530617607411116,
+            "a photo of a futuristic style car": 0.06459720521618727,
+            "a photo of a vintage style car": 0.025036650044391394
+        },
+        "6": {
+            "a photo of a sporty aggressive style car": 0.38392077798575713,
+            "a photo of a elegant luxury style car": 0.13427846883870964,
+            "a photo of a rugged off-road style car": 0.44595443335517,
+            "a photo of a futuristic style car": 0.02193316930737368,
+            "a photo of a vintage style car": 0.01391315173063453
+        },
+        "7": {
+            "a photo of a sporty aggressive style car": 0.44396535211873017,
+            "a photo of a elegant luxury style car": 0.3709065011725834,
+            "a photo of a rugged off-road style car": 0.11781828924392124,
+            "a photo of a futuristic style car": 0.05263255115448984,
+            "a photo of a vintage style car": 0.014677305322614813
+        },
+        "8": {
+            "a photo of a sporty aggressive style car": 0.3940544656981494,
+            "a photo of a elegant luxury style car": 0.4121373391855538,
+            "a photo of a rugged off-road style car": 0.1310990866189072,
+            "a photo of a futuristic style car": 0.051151854473326444,
+            "a photo of a vintage style car": 0.0115572512963048
+        },
+        "9": {
+            "a photo of a sporty aggressive style car": 0.1374608149077945,
+            "a photo of a elegant luxury style car": 0.00996184761728258,
+            "a photo of a rugged off-road style car": 0.8495444009493062,
+            "a photo of a futuristic style car": 0.001675226479942273,
+            "a photo of a vintage style car": 0.0013577081983391747
+        }
+    },
+    "ResNet50_dbscan": {
+        "1": {
+            "a photo of a sporty aggressive style car": 0.3579520530333142,
+            "a photo of a elegant luxury style car": 0.3151291765239857,
+            "a photo of a rugged off-road style car": 0.2463181974017339,
+            "a photo of a futuristic style car": 0.0670241252046738,
+            "a photo of a vintage style car": 0.0135764463148397
+        }
+    }
+}

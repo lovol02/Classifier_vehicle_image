@@ -6,29 +6,33 @@ from PIL import Image
 from torchvision import models, transforms as T
 import pandas as pd
 
-# Load the model ResNet50 with standard weight of ImageNet
-weights = models.ResNet50_Weights.IMAGENET1K_V2 #Bicubic interpolation, more accurate
-resnet50 = models.resnet50(weights=weights)
-#cut off the final layer to get only embedding, without getting a category prediction
-#the model stops at the Global Average Pooling layer, tensor has shape [batch_size, 2048, 1, 1]
-resnet50 = nn.Sequential(*(list(resnet50.children())[:-1]))
+def Resnet50_model_config(device="cuda"):
+    if device == "cuda" and torch.cuda.is_available():
+        pass
+    else:
+        device = "cpu"
+    # Load the model ResNet50 with standard weight of ImageNet
+    weights = models.ResNet50_Weights.IMAGENET1K_V2 #Bicubic interpolation, more accurate
+    resnet50 = models.resnet50(weights=weights)
+    #cut off the final layer to get only embedding, without getting a category prediction
+    #the model stops at the Global Average Pooling layer, tensor has shape [batch_size, 2048, 1, 1]
+    resnet50 = nn.Sequential(*(list(resnet50.children())[:-1]))
+    resnet50 = resnet50.to(device)
+    resnet50.eval()
 
-device = "cuda" if torch.cuda.is_available() else "cpu"
-resnet50 = resnet50.to(device)
-resnet50.eval()
+    #This used to transform image into propriate format that dinov2 can process
+    transform = T.Compose([
+        #resize image to 252pixel, then cut it in center of 224 pixel,Bicubic=4x4 neighbor
+        T.Resize(252, interpolation=T.InterpolationMode.BICUBIC),
+        T.CenterCrop(224),
+        #convert pixel into numbers
+        T.ToTensor(),
+        #The mean and std, the values inside is considered as constant value, derive from ImageNet
+        T.Normalize(mean=[0.485, 0.456, 0.406], std=[0.229, 0.224, 0.225]),
+    ])
+    return device,resnet50,transform
 
-#This used to transform image into propriate format that dinov2 can process
-transform = T.Compose([
-    #resize image to 252pixel, then cut it in center of 224 pixel,Bicubic=4x4 neighbor
-    T.Resize(252, interpolation=T.InterpolationMode.BICUBIC),
-    T.CenterCrop(224),
-    #convert pixel into numbers
-    T.ToTensor(),
-    #The mean and std, the values inside is considered as constant value, derive from ImageNet
-    T.Normalize(mean=[0.485, 0.456, 0.406], std=[0.229, 0.224, 0.225]),
-])
-
-def extract_resnet50_features(image_path):
+def extract_resnet50_features(image_path,device,resnet50,transform):
     img = Image.open(image_path).convert('RGB')
     img_t = transform(img).unsqueeze(0).to(device)
     
@@ -44,7 +48,7 @@ def extract_resnet50_features(image_path):
     return features.detach().cpu().to(torch.float32).numpy().flatten()
 
 
-def All_Features_ResNet50(df,dir):
+def All_Features_ResNet50(df,dir,device,resnet50,transform):
     all_features=[]
     #for index, row in df.head(50).iterrows():
     for index, row in df.iterrows():
@@ -56,18 +60,24 @@ def All_Features_ResNet50(df,dir):
             "brand": row["brand"],
             "file_name": row["fname"]
         }
-        features=extract_resnet50_features(image_path)
-        print(features)
+        features=extract_resnet50_features(image_path,device,resnet50,transform)
+        #print(features)
         vehicle_metadata['features']=features
         all_features.append(vehicle_metadata)
         #print(all_features)
 
     return all_features
 
-
-os.makedirs("data", exist_ok=True) 
-image_dir="dataset/cars_train/cars_train"
-df=pd.read_pickle('data/standard_cars_metadata.pkl')
-features=All_Features_ResNet50(df,image_dir)
-resnet50_features=pd.DataFrame(features)
-resnet50_features.to_pickle('data/standard_ResNet50_feature.pkl')
+def init(image_dir,metadata,destFeatureFile,device="cuda"):
+    device,resnet50,transform=Resnet50_model_config(device)
+    df=pd.read_pickle(metadata)
+    features=All_Features_ResNet50(df,image_dir,device,resnet50,transform)
+    resnet50_features=pd.DataFrame(features)
+    resnet50_features.to_pickle(destFeatureFile)
+    
+if __name__ == '__main__':
+    os.makedirs("data", exist_ok=True) 
+    image_dir="dataset/cars_train/cars_train"
+    metadata='data/standard_cars_metadata.pkl'
+    destFeatureFile='data/standard_ResNet50_feature.pkl'
+    init(image_dir,metadata,destFeatureFile)

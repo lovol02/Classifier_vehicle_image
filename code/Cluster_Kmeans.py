@@ -7,21 +7,25 @@ from kneed import KneeLocator
 
 def Calculate_cluster_Kmeans(df,num_neighbors=15,n_comp_pca=50,n_comp_umap=10):
     X = np.vstack(df['features'].values)
+    #Use PCA and UMAP to reduce the dimension of the data vector
     pca = PCA(n_components=n_comp_pca)
     reducer = umap.UMAP(n_neighbors=num_neighbors, min_dist=0.1, n_components=n_comp_umap, random_state=42)
     pca_features = pca.fit_transform(X)
     u_features = reducer.fit_transform(pca_features)
-    #Use elbow instead silhouettes
+    #Use elbow instead silhouettes to predict the quantity of cluster
     inertia = []
     for k in range(1, 50):
         kmeans = KMeans(n_clusters=k, random_state=0).fit(u_features)
         inertia.append(kmeans.inertia_)
+    #Use a KneeLocator to automatically locate the best number of cluster
     kn = KneeLocator(range(1, 50), inertia, curve='convex', direction='decreasing')
     print(f"Optimal clusters: {kn.knee}")
     kmeans = KMeans(n_clusters=kn.knee, init='k-means++', random_state=0, n_init=10)
     clusters_kmeans = kmeans.fit_predict(u_features)
+    '''
     for elem in clusters_kmeans:
         print(elem)
+    '''
     df['clusters_kmeans']=clusters_kmeans
     return clusters_kmeans
 

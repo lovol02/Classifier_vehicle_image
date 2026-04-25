@@ -8,19 +8,25 @@ from PIL import Image
 pd.set_option('display.max_columns', None)
 #pd.set_option('display.max_colwidth', None)
 
-#define device use cuda
-device = "cuda" if torch.cuda.is_available() else "cpu"
-#define the open_clip with model ViT-B-32 and dataset laion2b_s34b_b79k
-#where ViT-B-32: Vision Transformer, Base size, with 32x32 pixel patches.
-#laion2b: Trained on the LAION-2B dataset (2 billion English image-text pairs).
-#s34b: The model "saw" 34 billion samples during training (meaning it went through the dataset multiple times).
-#b79k: A massive global batch size of 79,000 was used during training.
-model, _, preprocess = open_clip.create_model_and_transforms('ViT-B-32', pretrained='laion2b_s34b_b79k')
-tokenizer = open_clip.get_tokenizer('ViT-B-32')
-model.eval() #Added to tell model, we are predicting not training.
-model.to(device)
+def CLIP_model_config(device="cuda"):
+    if device == "cuda" and torch.cuda.is_available():
+        pass
+    else:
+        device = "cpu"
+    #define device use cuda
+    #device = "cuda" if torch.cuda.is_available() else "cpu"
+    #define the open_clip with model ViT-B-32 and dataset laion2b_s34b_b79k
+    #where ViT-B-32: Vision Transformer, Base size, with 32x32 pixel patches.
+    #laion2b: Trained on the LAION-2B dataset (2 billion English image-text pairs).
+    #s34b: The model "saw" 34 billion samples during training (meaning it went through the dataset multiple times).
+    #b79k: A massive global batch size of 79,000 was used during training.
+    model, _, preprocess = open_clip.create_model_and_transforms('ViT-B-32', pretrained='laion2b_s34b_b79k')
+    tokenizer = open_clip.get_tokenizer('ViT-B-32')
+    model.eval() #Added to tell model, we are predicting not training.
+    model.to(device)
+    return device,model,preprocess,tokenizer
 
-def generate_soft_labels(image_path, stylistic_prompts):
+def generate_soft_labels(image_path, stylistic_prompts,device,model,preprocess,tokenizer):
     """
     Generates soft labels using CLIP .
     """
@@ -65,7 +71,8 @@ def generate_soft_labels(image_path, stylistic_prompts):
     #print(features_for_cluster)
     return results,features_for_cluster
 
-def All_SoftLabel_and_Features_CLIP(df,prompt,dir):
+
+def All_SoftLabel_and_Features_CLIP(df,prompt,dir,device,model,preprocess,tokenizer):
     all_results=[]
     all_features=[]
     #for index, row in df.head(50).iterrows():
@@ -78,7 +85,7 @@ def All_SoftLabel_and_Features_CLIP(df,prompt,dir):
             "brand": row["brand"],
             "file_name": row["fname"]
         }
-        result,features=generate_soft_labels(image_path,prompt)
+        result,features=generate_soft_labels(image_path,prompt,device,model,preprocess,tokenizer)
         result.update(vehicle_metadata)
         vehicle_metadata['features']=features
         all_features.append(vehicle_metadata)
@@ -88,14 +95,20 @@ def All_SoftLabel_and_Features_CLIP(df,prompt,dir):
 
     return all_results,all_features
 
-
-os.makedirs("data", exist_ok=True)    
-image_dir="dataset/cars_train/cars_train"
-prompt=["sporty aggressive", "elegant luxury", "rugged off-road", "futuristic", "vintage"]
-df=pd.read_pickle('data/standard_cars_metadata.pkl')
-softLabel,features=All_SoftLabel_and_Features_CLIP(df,prompt,image_dir)
-SoftLabel_df = pd.DataFrame(softLabel)
-CLIP_features=pd.DataFrame(features)
-#print(CLIP_features.head(1))
-SoftLabel_df.to_pickle('data/standard_cars_softLabel.pkl')
-CLIP_features.to_pickle('data/standard_CLIP_feature.pkl')
+def init(image_dir,prompt,metadata,destSoftLabelFile,destCLIPFeatureFile,device="cuda"):
+    device,model,preprocess,tokenizer = CLIP_model_config(device)
+    df=pd.read_pickle(metadata)
+    softLabel,features=All_SoftLabel_and_Features_CLIP(df,prompt,image_dir,device,model,preprocess,tokenizer)
+    SoftLabel_df = pd.DataFrame(softLabel)
+    CLIP_features=pd.DataFrame(features)
+    SoftLabel_df.to_pickle(destSoftLabelFile)
+    CLIP_features.to_pickle(destCLIPFeatureFile)
+    
+if __name__ == '__main__':
+    os.makedirs("data", exist_ok=True)    
+    image_dir="dataset/cars_train/cars_train"
+    metadata='data/standard_cars_metadata.pkl'
+    prompt=["sporty aggressive", "elegant luxury", "rugged off-road", "futuristic", "vintage"]
+    destSoftLabelFile='data/standard_cars_softLabel.pkl'
+    destCLIPFeatureFile='data/standard_CLIP_feature.pkl'
+    init(image_dir,prompt,metadata,destSoftLabelFile,destCLIPFeatureFile)

@@ -1,4 +1,4 @@
-# %%
+
 import pandas as pd
 import numpy as np
 from sklearn.cluster import DBSCAN
@@ -7,7 +7,7 @@ import umap
 from sklearn.neighbors import NearestNeighbors
 from kneed import KneeLocator
 
-# %%
+
 
 def Calculate_cluster_DBSCAN(df,num_neighbors=15,n_comp_pca=50,n_comp_umap=10):
         pca = PCA(n_components=n_comp_pca)
@@ -37,7 +37,7 @@ def Calculate_cluster_DBSCAN(df,num_neighbors=15,n_comp_pca=50,n_comp_umap=10):
         percent_noise1 = (n_noise / len(clusters_dbscan)) * 100
         print(f"DBSCAN ha trovato {n_clusters_found_C} cluster "+f"\nrumore e'{percent_noise1}")
         return clusters_dbscan
-# %%
+
 if __name__ == "__main__":
     filenames=['data/standard_CLIP_feature.pkl','data/standard_DINOv2_feature.pkl','data/standard_ResNet50_feature.pkl']
     for f in filenames:
@@ -46,12 +46,12 @@ if __name__ == "__main__":
         df.to_pickle(f)
 
 '''
-# %%
+
 CLIP_df = pd.read_pickle('data/standard_CLIP_feature.pkl')
 DINO_df = pd.read_pickle('data/standard_DINOv2_feature.pkl')
 ResNet_df = pd.read_pickle('data/standard_ResNet50_feature.pkl')
 
-# %%
+
 # Extract value of features in every model，
 # np.vstack()take the vector and stack it as matrix
 X_CLIP = np.vstack(CLIP_df['features'].values)
@@ -83,7 +83,7 @@ kneedle = KneeLocator(
 eps_auto = distances[kneedle.knee]
 
 
-# %%
+
 #Eps the longest distance of two embedding to be considered as neighbor,if to small get too much -1 as rumor
 #the minimium number of sample to constructe a cluster, for regular of resnet it min value should be vector's dimension+1
 #so instead look at vector size, try to choose a small number to prevent the rumor.
@@ -108,5 +108,4 @@ n_noise = list(clusters_dbscan_ResNet).count(-1)
 percent_noise3 = (n_noise / len(clusters_dbscan_ResNet)) * 100
 print(f"DBSCAN ha trovato {n_clusters_found_R} cluster in ResNet"+f"\nrumore e'{percent_noise3}")
 
-# %%
 '''

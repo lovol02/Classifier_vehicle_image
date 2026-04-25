@@ -155,12 +155,12 @@ def UMAP_visualizzation(df,df1,df2,dfile):
     temporal_analysis5 = df2.groupby('clusters_kmeans')['year'].agg(['mean', 'median', 'std']).sort_values(by='mean')
     temporal_analysis6 = df2.groupby('clusters_dbscan')['year'].agg(['mean', 'median', 'std']).sort_values(by='mean')
     data_to_save = {
-        "analysis_1": temporal_analysis1.to_dict(),
-        "analysis_2": temporal_analysis2.to_dict(),
-        "analysis_3": temporal_analysis3.to_dict(),
-        "analysis_4": temporal_analysis4.to_dict(),
-        "analysis_5": temporal_analysis5.to_dict(),
-        "analysis_6": temporal_analysis6.to_dict(),
+        "clusters_kmeans": temporal_analysis1.to_dict(),
+        "clusters_dbscan": temporal_analysis2.to_dict(),
+        "clusters_kmeans": temporal_analysis3.to_dict(),
+        "clusters_dbscan": temporal_analysis4.to_dict(),
+        "clusters_kmeans": temporal_analysis5.to_dict(),
+        "clusters_dbscan": temporal_analysis6.to_dict(),
     }
     with open(dfile+'temporal_analysis.json', 'w') as f:
         json.dump(data_to_save, f, indent=4)

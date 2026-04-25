@@ -208,6 +208,22 @@ def vit_reshape_transform(tensor):
     return result
           
 def grad_cam(centroids,dic,df,sfolder,dfolder):
+    reshape_func = None
+    if df.name == "ResNet50":
+        device,model,transform=Resnet50_model_config()
+        # The target layer for ResNet50 is the layer before average pool layer
+        target_layers = [model[7][-1]]
+    elif df.name == "DINOv2":
+        device,model,transform= DINOV2_model_config()
+        target_layers = [model.blocks[-2]]
+        reshape_func = vit_reshape_transform
+    else:
+        device,model,transform,tokenizer = CLIP_model_config()
+        target_layers = [model.visual.transformer.resblocks[-2]]
+        reshape_func = vit_reshape_transform
+    # Define grad-cam
+    cam = GradCAM(model=model, target_layers=target_layers, reshape_transform=reshape_func)
+            
     for k,v in dic.items():
         centroid=centroids[k]
         for idx in v:
@@ -216,26 +232,12 @@ def grad_cam(centroids,dic,df,sfolder,dfolder):
             path.mkdir(parents=True, exist_ok=True)
             image=sfolder+df.loc[idx, 'file_name']
             dstfile=fpath+"heatmap_"+df.loc[idx, 'file_name']
-            reshape_func = None
-            if df.name == "ResNet50":
-                device,model,transform=Resnet50_model_config()
-                # The target layer for ResNet50 is the layer before average pool layer
-                target_layers = [model[7][-1]]
-            elif df.name == "DINOv2":
-                device,model,transform= DINOV2_model_config()
-                target_layers = [model.blocks[-2]]
-                reshape_func = vit_reshape_transform
-            else:
-                device,model,transform,tokenizer = CLIP_model_config()
-                target_layers = [model.visual.transformer.resblocks[-2]]
-                reshape_func = vit_reshape_transform
-                
+ 
             centroid_tensor = torch.from_numpy(centroid).float().to(device)
             img = Image.open(image).convert('RGB')
             input_tensor = transform(img).unsqueeze(0)
     
-            # Define grad-cam
-            cam = GradCAM(model=model, target_layers=target_layers, reshape_transform=reshape_func)
+            # Process with grad-cam
             targets = [SimilarityTarget(centroid_tensor)]
             grayscale_cam = cam(input_tensor=input_tensor, targets=targets)[0, :]
 

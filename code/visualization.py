@@ -173,10 +173,10 @@ class SimilarityTarget:
         # Determine if it's CNN or ViT based on dimensions
         if len(model_output.shape) == 4: # In total 4 spartial feature map, [Batch, Channels, Height, Width]
             z = torch.nn.functional.adaptive_avg_pool2d(model_output, 1).flatten(1)
-        elif len(model_output.shape) == 3: # In total 3 element at last layer, [Batch, Tokens, Embedding_Dim]
+        elif model_output.dim() == 3: # In total 3 element at last layer, [Batch, Tokens, Embedding_Dim]
             z = model_output[:, 0, :]
         else:
-            z = model_output
+             z = model_output
 
         # Cosine Similarity Calculation
         z_norm = torch.nn.functional.normalize(z, dim=-1)
@@ -186,24 +186,26 @@ class SimilarityTarget:
         return (z_norm * mu_norm).sum()
 
 def vit_reshape_transform(tensor):
-    # 1. Ensure Batch is at index 0 [Batch, Tokens, Channels]
-    if tensor.shape[1] == 1: # This means it's [Tokens, Batch, Channels]
-        tensor = tensor.transpose(0, 1)
+    # tensor shape is usually [Batch, Tokens, Channels]
+    # 1. Determine how many non-patch tokens there are
+    # For DINOv2 with registers: 1 (CLS) + 4 (Reg) = 5
+    # For CLIP: 1 (CLS) = 1
+    num_tokens = tensor.shape[1]
+    if num_tokens == 257: # 224/14 = 16. 16*16 = 256 + 1 CLS
+        start_index = 1
+    elif num_tokens == 261: # 256 patches + 1 CLS + 4 Registers
+        start_index = 5
+    else:
+        # Fallback for other resolutions
+        start_index = 1 
+
+    patch_tokens = tensor[:, start_index:, :] 
     
-    # 2. Separate CLS token and Patch tokens
-    # CLIP typically has 1 CLS token at the start
-    patch_tokens = tensor[:, 1:, :] 
-    
-    # 3. Calculate grid dimensions dynamically
-    # num_patches = patch_tokens.shape[1]
-    # For a square grid, height = width = sqrt(num_patches)
+    # Calculate grid size (e.g., 14 for 196 patches or 16 for 256 patches)
     num_patches = patch_tokens.shape[1]
     grid_size = int(num_patches**0.5) 
     
-    # 4. Reshape to [Batch, H, W, Channels]
     result = patch_tokens.reshape(tensor.size(0), grid_size, grid_size, tensor.size(2))
-    
-    # 5. Permute to [Batch, Channels, H, W] for Grad-CAM
     result = result.transpose(2, 3).transpose(1, 2)
     return result
           
@@ -215,7 +217,7 @@ def grad_cam(centroids,dic,df,sfolder,dfolder):
         target_layers = [model[7][-1]]
     elif df.name == "DINOv2":
         device,model,transform= DINOV2_model_config()
-        target_layers = [model.blocks[-2]]
+        target_layers = [model.blocks[-1].norm1]
         reshape_func = vit_reshape_transform
     else:
         device,model,transform,tokenizer = CLIP_model_config()
@@ -235,7 +237,7 @@ def grad_cam(centroids,dic,df,sfolder,dfolder):
  
             centroid_tensor = torch.from_numpy(centroid).float().to(device)
             img = Image.open(image).convert('RGB')
-            input_tensor = transform(img).unsqueeze(0)
+            input_tensor = transform(img).unsqueeze(0).to(device)
     
             # Process with grad-cam
             targets = [SimilarityTarget(centroid_tensor)]

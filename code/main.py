@@ -87,7 +87,7 @@ def main():
     # %%
     # Point4 Visualizzation
     # UMAP visualizzation
-    
+    '''
     dfolder="./instance_2026-04-24_21-04-16/"+"UMAP_pictures/"
     CLIP_features=pd.read_pickle("D:\progetto_ai\classifier_vehicle\code\instance_2026-04-24_21-04-16\data\CLIP.pkl")
     CLIP_features.name="CLIP"
@@ -98,10 +98,10 @@ def main():
     dataframes=[CLIP_features,DINOv2_features,resnet50_features]
     image_dir="dataset/cars_train/cars_train/"
     prototypeFolder="./instance_2026-04-24_21-04-16/"+"prototype/"
-    
-    #dfolder=folder_name+"UMAP_pictures/"
-    #os.makedirs(dfolder, exist_ok=True)
-    #UMAP_visualizzation(CLIP_features,DINOv2_features,resnet50_features,dfolder)
+    '''
+    dfolder=folder_name+"UMAP_pictures/"
+    os.makedirs(dfolder, exist_ok=True)
+    UMAP_visualizzation(CLIP_features,DINOv2_features,resnet50_features,dfolder)
     
     # Prototype extraction and grad-cam
     Methods_clustering=["Kmeans","DBSCAN"]

@@ -88,16 +88,16 @@ def main():
     # Point4 Visualizzation
     # UMAP visualizzation
     '''
-    dfolder="./instance_2026-04-24_21-04-16/"+"UMAP_pictures/"
-    CLIP_features=pd.read_pickle("D:\progetto_ai\classifier_vehicle\code\instance_2026-04-24_21-04-16\data\CLIP.pkl")
+    dfolder="./instance_2026-04-22_20-40-11/"+"UMAP_pictures/"
+    CLIP_features=pd.read_pickle("D:\progetto_ai\classifier_vehicle\code\instance_2026-04-22_20-40-11\data\CLIP.pkl")
     CLIP_features.name="CLIP"
-    DINOv2_features=pd.read_pickle("D:\progetto_ai\classifier_vehicle\code\instance_2026-04-24_21-04-16\data\DINOv2.pkl")
+    DINOv2_features=pd.read_pickle("D:\progetto_ai\classifier_vehicle\code\instance_2026-04-22_20-40-11\data\DINOv2.pkl")
     DINOv2_features.name="DINOv2"
-    resnet50_features=pd.read_pickle("D:\progetto_ai\classifier_vehicle\code\instance_2026-04-24_21-04-16\data\ResNet.pkl")
+    resnet50_features=pd.read_pickle("D:\progetto_ai\classifier_vehicle\code\instance_2026-04-22_20-40-11\data\ResNet.pkl")
     resnet50_features.name="ResNet50"
     dataframes=[CLIP_features,DINOv2_features,resnet50_features]
     image_dir="dataset/cars_train/cars_train/"
-    prototypeFolder="./instance_2026-04-24_21-04-16/"+"prototype/"
+    prototypeFolder="./instance_2026-04-22_20-40-11/"+"prototype/"
     '''
     dfolder=folder_name+"UMAP_pictures/"
     os.makedirs(dfolder, exist_ok=True)
